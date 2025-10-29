@@ -1,31 +1,31 @@
-epochs = 100000
-batch_size = 64
+[] def train(g model,d model, gan model, dataset, latent_dim,n_epochs-20,n_batch-128):
 
-for epoch in range(epochs+1):
-   
-    noise = np.random.normal(0, 1, (batch_size, 100))
-    generated_images = generator_cnn.predict(noise)
+hatch_per_epoch dataset.shape[0]//n_batch
 
-    idx = np.random.randint(0, x_train.shape[0], batch_size)
-    real_images = x_train[idx]
+half_batchn_batch//2
 
-    real_labels = np.ones((batch_size, 1))
-    fake_labels = np.zeros((batch_size, 1))
+for i in range(n_epochs):
 
-    d_loss_real = discriminator_cnn.train_on_batch(real_images, real_labels)
-    d_loss_fake = discriminator_cnn.train_on_batch(generated_images, fake_labels)
-    d_loss = 0.5 * np.add(d_loss_real, d_loss_fake)
+for j in range(batch_per_epoch):
 
-    noise = np.random.normal(0, 1, (batch_size, 100))
-    valid_labels = np.ones((batch_size, 1))
-    g_loss = gan_cnn.train_on_batch(noise, valid_labels)
+x_real,y real generate_real_sample(dataset, half_batch)
 
-    if epoch % 100 == 0:
-        print(f"Epoch {epoch}: D Loss: {d_loss[0]}, G Loss: {g_loss}")
+d_lossi, d_model.train_on_batch(x_real,y_real)
 
-    if epoch % 1000 == 0:
-        test_noise = np.random.normal(0, 1, (1, 100))
-        test_img = generator_cnn.predict(test_noise)[0].reshape(28, 28)
-        plt.imshow(test_img, cmap='gray')
-        plt.axis('off')
-        plt.show()
+x_fake,y fake generate_fake_sample_by_generator(g_model, latent_dim,half_batch)
+
+d_loss2, d_model.train_on_batch(x_fake,y_fake)
+
+x_gan generate_latent_points(latent_dim,n_batch)
+
+y gan np.ones((n_batch,1))
+
+E_loss gan_model.train_on_batch(x_gan,y gan)
+
+print('(i+1).
+
+(j+1)/(batch_per_epoch): di (d_lossi), d2 (d_loss2), (gloss)')
+
+if (1+1)%100:
+
+summerize function(i,g_model,d_model, dataset, latent_dim)
